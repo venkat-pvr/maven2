@@ -1,0 +1,32 @@
+pipeline {
+	agent any
+	stages {
+		stage('Compile stage')
+			{
+			steps {
+				echo 'this is compile stage'
+				withMaven(maven : 'maven') { //my maven installation name is 'maven'
+				bat 'mvn clean compile'
+				}
+				}
+			}
+		stage('Test stage')
+			{
+			steps {
+				echo 'this is test stage'
+				withMaven(maven : 'maven') { //my maven installation name is 'maven'
+				bat 'mvn test'
+				}
+				}
+			}
+		stage('Deploy stage')
+			{
+			steps {
+				echo 'this is deploy stage'
+				withMaven(maven : 'maven') {//my maven installation name is 'maven'
+				bat 'mvn deploy'
+			}
+			}
+			}
+		}
+	}
