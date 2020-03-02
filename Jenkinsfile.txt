@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				echo 'this is deploy stage'
 				withMaven(maven : 'maven') {//my maven installation name is 'maven'
-				bat 'mvn deploy'
+				bat 'mvn tomcat7:deploy'
 			}
 			}
 			}
